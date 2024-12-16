@@ -52,3 +52,7 @@ function combine(a, b, c) {
     let result = a * b / c;
     return result;
 }
+
+// Arrow function
+const btn = document.getElementById('btn');
+btn.onclick = () => console.log('clicked');

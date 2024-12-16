@@ -96,3 +96,85 @@ const editHobbies = hobbies.map((item) => ({
     index: hobbies.findIndex((item2) => item2 == item),
 }));
 console.log(editHobbies);
+
+/*************************
+Destructuring
+*************************/
+// Array destruct, var names are user defined
+const [firstName, lastName] = ["Tom", "Cruise"];
+console.log(firstName, lastName);
+
+// Object destruct, var names must be same as class vars
+// Alias is allowed eg., name:userName
+const { name, age } = {
+    name: "Peter",
+    age: 50,
+};
+console.log(name, age);
+
+// Destruct function value
+function storeOrder({ id, currency }) {
+    // destructuring
+    localStorage.setItem("id", id);
+    localStorage.setItem("currency", currency);
+}
+
+/*************************
+Spread Operator
+*************************/
+const newHobbies = ["Music", "Gym"];
+const incorrectMergedHobbies = [hobbies, newHobbies];
+const mergedHobbies = [...hobbies, ...newHobbies];
+
+console.log("Incorrect merging of arrays :", incorrectMergedHobbies);
+console.log("Correct merging of arrays :", mergedHobbies);
+
+const extendedUser = {
+    isAdmin: true,
+    ...user1,
+};
+console.log(extendedUser);
+
+/*************************
+Control Structures
+*************************/
+const password = prompt("Enter Password");
+
+if (password === "Hello") {
+    console.log("Hello works!");
+} else if (password === "hello") {
+    console.log("hello works!");
+} else {
+    console.log("Access denied");
+}
+
+for (const hobby of newHobbies) {
+    console.log("Hobby :", hobby);
+}
+
+/*************************
+More functional operations
+*************************/
+// Timeouts and passing functions as values
+function handleTimeout() {
+    console.log("Timed out!");
+}
+const handleTimeout1 = () => {
+    console.log("Timed out again...");
+};
+
+setTimeout(handleTimeout, 2000);
+setTimeout(handleTimeout1, 3000);
+setTimeout(() => {
+    console.log("Timeout funtion as value");
+}, 4000);
+
+// Function inside another function
+function init() {
+    function greet() {
+        console.log("Hello from init");
+    }
+    greet();
+}
+// greet(); will not work as it is not scoped outside init()
+init();

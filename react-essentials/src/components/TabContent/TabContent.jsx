@@ -1,15 +1,15 @@
 import { EXAMPLES } from "../../data.js";
 import "./TabContent.css";
 
-function TabContent({ selectedTopic }) {
+function TabContent({ selectedTopic, ...props }) {
     let tabContent = (
-        <div id="tab-content">
+        <div {...props}>
             <p>Please Select a topic.</p>
         </div>
     );
     if (selectedTopic) {
         tabContent = (
-            <div id="tab-content">
+            <div {...props}>
                 <h3>{EXAMPLES[selectedTopic].title}</h3>
                 <p>{EXAMPLES[selectedTopic].description}</p>
                 <pre>
@@ -19,7 +19,7 @@ function TabContent({ selectedTopic }) {
         );
     }
 
-    return <div>{tabContent}</div>;
+    return <>{tabContent}</>;
 }
 
 export default TabContent;

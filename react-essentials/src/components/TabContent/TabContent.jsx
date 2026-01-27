@@ -1,7 +1,7 @@
 import { EXAMPLES } from "../../data.js";
 import "./TabContent.css";
 
-function TabContent({ selectedTopic, ...props }) {
+const TabContent = ({ selectedTopic, ...props }) => {
     let tabContent = (
         <div {...props}>
             <p>Please Select a topic.</p>
@@ -20,6 +20,6 @@ function TabContent({ selectedTopic, ...props }) {
     }
 
     return <>{tabContent}</>;
-}
+};
 
 export default TabContent;

@@ -4,11 +4,9 @@ import { useState } from "react";
 import "./ExampleSection.css";
 import Tabs from "../Tabs/Tabs.jsx";
 
-function ExampleSection() {
+const ExampleSection = () => {
     const [selectedTopic, setSelectedTopic] = useState();
-    function handleClick(selectedButton) {
-        setSelectedTopic(selectedButton);
-    }
+    const handleClick = (selectedButton) => setSelectedTopic(selectedButton);
 
     return (
         <section id="examples">
@@ -17,9 +15,7 @@ function ExampleSection() {
                 buttons={
                     <>
                         <TabButton
-                            isSelected={
-                                selectedTopic === "components"
-                            }
+                            isSelected={selectedTopic === "components"}
                             onClick={() => handleClick("components")}
                         >
                             Components
@@ -45,13 +41,10 @@ function ExampleSection() {
                     </>
                 }
             >
-                <TabContent
-                    selectedTopic={selectedTopic}
-                    id="tab-content"
-                />
+                <TabContent selectedTopic={selectedTopic} id="tab-content" />
             </Tabs>
         </section>
     );
-}
+};
 
 export default ExampleSection;

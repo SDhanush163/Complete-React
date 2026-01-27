@@ -1,6 +1,6 @@
 import "./CoreConcept.css";
 
-function CoreConcept({ image, title, description }) {
+const CoreConcept = ({ image, title, description }) => {
     return (
         <li>
             <img src={image} alt={title} />
@@ -8,6 +8,6 @@ function CoreConcept({ image, title, description }) {
             <p>{description}</p>
         </li>
     );
-}
+};
 
 export default CoreConcept;

@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./Player.css";
 
-function Player({ initialName, symbol }) {
+const Player = ({ initialName, symbol }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [playerName, setPlayerName] = useState(initialName);
 
-    function handleEditClick() {
+    const handleEditClick = () => {
         setIsEditing((editState) => !editState);
-    }
+    };
 
-    function handleChange(event) {
+    const handleChange = (event) => {
         setPlayerName(event.target.value);
-    }
+    };
 
     return (
         <li>
@@ -23,6 +23,7 @@ function Player({ initialName, symbol }) {
                         type="text"
                         required
                         value={playerName}
+                        onSelect={(event) => event.target.select()}
                         onChange={handleChange}
                     />
                 )}
@@ -33,6 +34,6 @@ function Player({ initialName, symbol }) {
             </button>
         </li>
     );
-}
+};
 
 export default Player;

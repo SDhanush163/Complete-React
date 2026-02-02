@@ -6,7 +6,10 @@ const initialGameBoard = [
     [null, null, null],
 ];
 
-const GameBoard = ({ onSelectSquare, activePlayerSymbol }) => {
+const GameBoard = ({ onSelectSquare, turns }) => {
+    /*----------------------------------------------------------------
+    This functionality has been lifted up to the App Component
+    ------------------------------------------------------------------
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     const handleSelectSquare = (row, col) => {
@@ -18,6 +21,15 @@ const GameBoard = ({ onSelectSquare, activePlayerSymbol }) => {
         });
         onSelectSquare();
     };
+    ----------------------------------------------------------------*/
+
+    let gameBoard = initialGameBoard;
+
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, col } = square;
+        gameBoard[row][col] = player;
+    }
 
     return (
         <ol id="game-board">
@@ -28,7 +40,7 @@ const GameBoard = ({ onSelectSquare, activePlayerSymbol }) => {
                             <li key={colIndex}>
                                 <button
                                     onClick={() =>
-                                        handleSelectSquare(rowIndex, colIndex)
+                                        onSelectSquare(rowIndex, colIndex)
                                     }
                                 >
                                     {col}

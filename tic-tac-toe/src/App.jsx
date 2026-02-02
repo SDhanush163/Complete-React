@@ -96,12 +96,15 @@ const App = () => {
             onChangeName={handlePlayerNameChange}
           />
         </ol>
+        <button id="reset" onClick={handleRestart}>
+          Reset
+        </button>
         {(winner || hasDraw) && (
           <GameOver winner={winner} onRestart={handleRestart} />
         )}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
       </div>
-      <Log turns={gameTurns} />
+      <Log turns={gameTurns} players={players} />
     </main>
   );
 };

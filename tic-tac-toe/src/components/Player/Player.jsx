@@ -24,7 +24,7 @@ const Player = ({ initialName, symbol, isActive, onChangeName }) => {
             type="text"
             required
             value={playerName}
-            onSelect={(event) => event.target.select()}
+            onFocus={(event) => event.target.select()}
             onChange={handleChange}
           />
         )}

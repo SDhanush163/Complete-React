@@ -1,11 +1,12 @@
 import React from "react";
 
-const Log = ({ turns }) => {
+const Log = ({ turns, players }) => {
   return (
     <ol id="log">
       {turns.map((turn) => (
         <li key={`${turn.square.row}${turn.square.col}`}>
-          {turn.player} selected {turn.square.row + 1}, {turn.square.col + 1}
+          {players[turn.player].toUpperCase()} selected [{turn.square.row + 1},{" "}
+          {turn.square.col + 1}]
         </li>
       ))}
     </ol>

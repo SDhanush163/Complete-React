@@ -35,16 +35,6 @@ button:focus {
   outline: none;
 }
 
-@media (min-width: 768px) {
-  header {
-    margin-bottom: 4rem;
-  }
-
-  header h1 {
-    font-size: 2.25rem;
-  }
-}
-
 #auth-inputs {
   width: 100%;
   max-width: 28rem;
@@ -58,7 +48,24 @@ button:focus {
   color: white;
 }
 
-.controls {
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.text-button {
+  color: #f0b322;
+  border: none;
+}
+
+.text-button:hover {
+  color: #f0920e;
+}
+
+/* ----------------------------------------------------------- */
+/* Not used anymore as this has been move to Styled-components */
+/* .controls {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -97,13 +104,7 @@ input.invalid {
   border-color: #f73f3f;
   background-color: #fed2d2;
 }
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
+  
 .button {
   padding: 1rem 2rem;
   font-weight: 600;
@@ -117,13 +118,5 @@ input.invalid {
 
 .button:hover {
   background-color: #f0920e;
-}
-
-.text-button {
-  color: #f0b322;
-  border: none;
-}
-
-.text-button:hover {
-  color: #f0920e;
-}
+} */
+/* ----------------------------------------------------------- */

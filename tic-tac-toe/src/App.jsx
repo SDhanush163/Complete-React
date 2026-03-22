@@ -5,6 +5,21 @@ import Log from "./components/Log/Log.jsx";
 import { WINNING_COMBINATIONS } from "./assets/winning-combinations.js";
 import GameOver from "./components/GameBoard/GameOver.jsx";
 
+/* --------------------------------------------------------
+Global components and handling some custom logic
+  - PLAYERS > Initial player names for X and O
+  - INITIAL_GAME_BOARD > Initial Game state
+
+  - deriveActivePlayer > Change the current player between
+      X and O each turn 
+  - deriveGameBoard > Draw the game board with the updated 
+      marker for the player based on the game turns array. 
+      The array has objects that have the square that was 
+      pressed and the player who played the turn 
+  - deriveWinner > If gameboard gets into one of the winning
+      combinations, the player who last played is the winner
+-------------------------------------------------------- */
+
 const PLAYERS = { X: "player 1", O: "player 2" };
 
 const INITIAL_GAME_BOARD = [
@@ -51,6 +66,30 @@ const deriveWinner = (gameBoard, players) => {
   return winner;
 };
 
+/* --------------------------------------------------------
+App component - Main game logic
+ - players > Handles both player 1 and 2
+ - gameTurns > Keeps track of the game turns. Each element
+      in the array is and object of the square that has 
+      been played and who played it
+ - activePlayer > Keeps track of the current player using 
+      the helper function deriveActivePlayer
+ - gameBoard > Keeps track of the game board and the current
+      state of the game
+ - winner > Each turn check for a winner
+ - hasDraw > If 9 rounds have been played and no winner, 
+      the game is a draw.
+
+  - handleSelectSquare > When the button on the game board 
+      corresponding to a square is clicked, this method will
+      append the gameTurns state with the current active 
+      player and the {row, col} of the square played and add 
+      it to the top of the stack array.
+  - handleRestart > Reset the game and clear the game turns
+  - handlePlayerNameChange > Change the player name for the 
+      symbol
+-------------------------------------------------------- */
+
 const App = () => {
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
@@ -78,7 +117,9 @@ const App = () => {
   const handlePlayerNameChange = (symbol, name) =>
     setPlayers((prev) => ({ ...prev, [symbol]: name }));
 
+  // --------------------------------------------------------
   // Screen
+  // --------------------------------------------------------
   return (
     <main>
       <div id="game-container">

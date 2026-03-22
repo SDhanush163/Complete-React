@@ -1,3 +1,4 @@
+// Input component
 const Input = ({ id, label, onChange, value }) => {
   return (
     <p>

@@ -1,5 +1,8 @@
 import React from "react";
 
+/* --------------------------------------------------------
+Log component - Prints the turns taken and details for it
+-------------------------------------------------------- */
 const Log = ({ turns, players }) => {
   return (
     <ol id="log">

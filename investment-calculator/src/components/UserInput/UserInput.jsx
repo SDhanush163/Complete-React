@@ -1,5 +1,9 @@
 import Input from "./Input";
-
+/* --------------------------------------------------------
+User input component - Takes the object from the app and 
+    builds the inputs from it and on changing a field value
+    pushes it back to the app
+-------------------------------------------------------- */
 const UserInput = ({
   onChange,
   inputs: { initialInvestment, monthlyInvestment, expectedReturn, duration },

@@ -1,3 +1,21 @@
+/* --------------------------------------------------------
+Utils - 
+  - calculateInvestmentResults > Uses the SIP formula to 
+      compute the yearly profits
+      1. Compute the monthly Rate from the returns % sent as
+            mRate = (1 + R/100)^(1/12) - 1
+
+      2. In each year, loop through monthly and compute 
+         the monthly interest earned as
+            intMonth = (P * mRate)
+            intYear = intYear + intMonth
+            P = P + intMonth + pMonth
+            
+      3. As the year is done, push the value to the array 
+
+  - formatter > Format the value and return in INR
+-------------------------------------------------------- */
+
 export function calculateInvestmentResults({
   initialInvestment,
   monthlyInvestment,

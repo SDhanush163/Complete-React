@@ -1,5 +1,10 @@
 import React from "react";
 
+/* --------------------------------------------------------
+Game over - The game is over if either user wins or the 
+    board is filled. This component just renders the final
+    screen based on the winner and pass restarting the game
+-------------------------------------------------------- */
 const GameOver = ({ winner, onRestart }) => {
   return (
     <div id="game-over">

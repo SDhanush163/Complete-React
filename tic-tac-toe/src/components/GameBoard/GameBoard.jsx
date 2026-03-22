@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+/* --------------------------------------------------------
+Game board component - Renders the game board with the 
+    game progress 
+-------------------------------------------------------- */
+
 const GameBoard = ({ onSelectSquare, board }) => {
   return (
     <ol id="game-board">

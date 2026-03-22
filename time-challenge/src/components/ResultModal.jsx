@@ -1,4 +1,5 @@
 import { useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
 
 // React version < 19, use below to forward ref instead of in the props
 // const ResultModal = forwardRef(({ result, targetTime }, ref) => {})
@@ -17,7 +18,7 @@ const ResultModal = ({ remainingTime, targetTime, onReset, ref }) => {
     };
   });
 
-  return (
+  return createPortal(
     <dialog ref={dialog} className="result-modal" onClose={onReset}>
       <h2>{didUserLose ? "You lost" : `Your score - ${score}`}</h2>
       <p>
@@ -30,7 +31,8 @@ const ResultModal = ({ remainingTime, targetTime, onReset, ref }) => {
       <form method="dialog" onSubmit={onReset}>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog>,
+    document.getElementById("modal"),
   );
 };
 

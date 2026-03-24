@@ -1,8 +1,11 @@
+import Sidebar from "./components/Sidebar";
+import { STYLES } from "./utils/stylesUtil";
+
 function App() {
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
+    <main className={STYLES.container}>
+      <Sidebar />
+    </main>
   );
 }
 

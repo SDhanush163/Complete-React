@@ -1,4 +1,3 @@
-import React from "react";
 const STYLES = {
   container: "flex flex-col gap-1 my-4",
   label: "text-sm font-bold uppercase text-stone-500",
@@ -6,6 +5,7 @@ const STYLES = {
   inputColor: "border-stone-300 bg-stone-200 text-stone-600",
   inputFocus: "focus:outline-none focus:border-stone-600",
 };
+
 const Input = ({ textArea, label, ...props }) => {
   const toCamelCase = (s) => s.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
   const id = toCamelCase(label);

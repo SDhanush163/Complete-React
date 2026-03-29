@@ -1,6 +1,6 @@
 import React from "react";
 
-const Shop = () => {
+const Shop = ({ children }) => {
   return (
     <section id="shop">
       <h2>Elegant Clothing For Everyone</h2>

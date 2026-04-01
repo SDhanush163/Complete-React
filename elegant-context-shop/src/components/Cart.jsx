@@ -1,14 +1,25 @@
 import { useContext } from "react";
 import { CartContext } from "../store/cartContext";
 
+/* --------------------------------------------------------
+Cart component - The cart of added items. If no items, show
+  'No items in cart!' and if there are items, add each to a
+  list and show the quantities selected and the total value
+  of the cart. Each item has an updte quantity div where the 
+  user can add or remove 1 item of the type.
+
+  - context > items and updateItemQuantity used
+  - totalPrice > go through the selected items and quantities
+      and return the sum price of the objects
+
+-------------------------------------------------------- */
+
 const Cart = () => {
   const { items, updateItemQuantity } = useContext(CartContext);
 
-  const totalPrice = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0,
-  );
-  const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+  const totalPrice = items
+    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+    .toFixed(2);
 
   return (
     <div id="cart">
@@ -39,7 +50,7 @@ const Cart = () => {
         </ul>
       )}
       <p id="cart-total-price">
-        Cart Total: <strong>{formattedTotalPrice}</strong>
+        Cart Total: <strong>{totalPrice}</strong>
       </p>
     </div>
   );

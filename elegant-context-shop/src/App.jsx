@@ -4,6 +4,12 @@ import Shop from "./components/Shop.jsx";
 import { DUMMY_PRODUCTS } from "./dummy-products.js";
 import CartContextProvider, { CartContext } from "./store/cartContext.jsx";
 
+/* --------------------------------------------------------
+App component - The main component with the context provider 
+  wrapper. It cleanly shows the header and the shop component
+  which uses the objects in the Dummy Products. 
+-------------------------------------------------------- */
+
 function App() {
   return (
     <CartContextProvider>

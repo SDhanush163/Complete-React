@@ -1,6 +1,33 @@
 import { createContext, useReducer } from "react";
 import { DUMMY_PRODUCTS } from "../dummy-products";
 
+/* --------------------------------------------------------
+Cart Context - Main context provider for the Cart. This 
+    contains the main context, the reducer function for 
+    add and update the cart state. 
+  
+  - CartContext > Context for the cart
+      1. items > Array of items in the cart
+      2. addToCart > function to dispatch type ADD_ITEM
+      3. updateItemQuantity > function to dispatch type 
+            UPDATE_ITEM
+
+  - shoppingCartReducer > Reducer function that takes the 
+      state and based on the type, will run and update the 
+      cart state in the reducer hook.
+        1. UPDATE_ITEM > Get the item in the array by index
+            add or remove one items. This function runs from 
+            the cart dialog component. 
+        2. ADD_ITEM > This runs when the Add to Cart button 
+            is clicked from the Shop page. This will also 
+            update the array if the shop item is existing 
+            in the cart. 
+    
+  - CartContextProvider > The jsx wrapper method for the 
+      Cart context. It contains the reducer for cart and 
+      and the handler functions to add and update items
+-------------------------------------------------------- */
+
 export const CartContext = createContext({
   items: [],
   addToCart: () => {},

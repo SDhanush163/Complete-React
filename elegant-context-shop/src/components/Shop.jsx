@@ -1,4 +1,6 @@
-import React from "react";
+/* --------------------------------------------------------
+Shop component - The wrapper to show each of the product. 
+-------------------------------------------------------- */
 
 const Shop = ({ children }) => {
   return (

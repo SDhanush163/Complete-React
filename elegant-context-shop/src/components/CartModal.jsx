@@ -1,7 +1,11 @@
-import { forwardRef, useContext, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import Cart from "./Cart";
-import { CartContext } from "../store/cartContext";
+
+/* --------------------------------------------------------
+Cart Modal component - Dialog box to showcase the Cart . 
+    Simple dialog wrapper for the cart
+-------------------------------------------------------- */
 
 const CartModal = forwardRef(({ title, actions }, ref) => {
   const dialog = useRef();

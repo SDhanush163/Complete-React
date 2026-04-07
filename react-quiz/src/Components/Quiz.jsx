@@ -1,9 +1,7 @@
 import { useCallback, useState } from "react";
 import QUESTIONS from "../questions";
-import quizCompleteImg from "../assets/quiz-complete.png";
-import QuestionTimer from "./QuestionTimer";
-import Answers from "./Answers";
 import Question from "./Question";
+import Summary from "./Summary";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -20,13 +18,7 @@ const Quiz = () => {
     [handleSelectAnswer],
   );
 
-  if (isQuizComplete)
-    return (
-      <div id="summary">
-        <img src={quizCompleteImg} alt="Trophy Icon" />
-        <h2>Quiz Completed!</h2>
-      </div>
-    );
+  if (isQuizComplete) return <Summary userAnswers={userAnswers} />;
 
   return (
     <div id="quiz">

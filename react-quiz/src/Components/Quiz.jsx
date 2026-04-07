@@ -10,14 +10,6 @@ const Quiz = () => {
   const activeQuestionIdx = userAnswers.length;
   const isQuizComplete = activeQuestionIdx === QUESTIONS.length;
 
-  if (isQuizComplete)
-    return (
-      <div id="summary">
-        <img src={quizCompleteImg} alt="Trophy Icon" />
-        <h2>Quiz Completed!</h2>
-      </div>
-    );
-
   const handleSelectAnswer = useCallback(
     (selectedAnswer) => setUserAnswers((prev) => [...prev, selectedAnswer]),
     [],
@@ -27,6 +19,14 @@ const Quiz = () => {
     () => handleSelectAnswer(null),
     [handleSelectAnswer],
   );
+
+  if (isQuizComplete)
+    return (
+      <div id="summary">
+        <img src={quizCompleteImg} alt="Trophy Icon" />
+        <h2>Quiz Completed!</h2>
+      </div>
+    );
 
   return (
     <div id="quiz">

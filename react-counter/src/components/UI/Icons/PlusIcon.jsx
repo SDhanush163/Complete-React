@@ -1,7 +1,7 @@
-import { log } from '../../../log.js';
+import { log } from "../../../log.js";
 
-export default function PlusIcon(props) {
-  log('<PlusIcon /> rendered', 3);
+const PlusIcon = (props) => {
+  log("<PlusIcon /> rendered", 3);
 
   return (
     <svg
@@ -19,4 +19,5 @@ export default function PlusIcon(props) {
       />
     </svg>
   );
-}
+};
+export default PlusIcon;

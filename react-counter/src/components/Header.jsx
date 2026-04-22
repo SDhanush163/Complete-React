@@ -1,7 +1,7 @@
 import { log } from "../log.js";
 import logoImg from "../assets/logo.png";
 
-export default function Header() {
+const Header = () => {
   log("<Header /> rendered", 1);
 
   return (
@@ -10,4 +10,5 @@ export default function Header() {
       <h1>React - Counter</h1>
     </header>
   );
-}
+};
+export default Header;

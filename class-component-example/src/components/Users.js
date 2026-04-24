@@ -38,6 +38,8 @@ class Users extends Component {
   }
 }
 
+export default Users;
+
 /* const Users = () => {
   const [showUsers, setShowUsers] = useState(true);
 
@@ -61,6 +63,6 @@ class Users extends Component {
       {showUsers && usersList}
     </div>
   );
-}; */
+};
 
-export default Users;
+export default Users; */

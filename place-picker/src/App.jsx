@@ -1,17 +1,34 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import logoImg from "./assets/logo.png";
 import AvailablePlaces from "./components/AvailablePlaces";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import Modal from "./components/Modal";
 import Places from "./components/Places";
-import { updateUserPlaces } from "./http";
+import { fetchUserPlaces, updateUserPlaces } from "./http";
 import ErrorPage from "./components/ErrorPage";
 
 const App = () => {
   const selectedPlace = useRef();
   const [userPlaces, setUserPlaces] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState();
   const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
+
+  useEffect(() => {
+    fetctPlaces();
+  }, []);
+
+  const fetctPlaces = async () => {
+    setIsFetching(true);
+    try {
+      const places = await fetchUserPlaces();
+      setUserPlaces(places);
+    } catch (error) {
+      setError({ message: error.message || " Failed to fetch user places" });
+    }
+    setIsFetching(false);
+  };
 
   const handleStartRemovePlace = (place) => {
     setModalIsOpen(true);
@@ -89,12 +106,19 @@ const App = () => {
         </p>
       </header>
       <main>
-        <Places
-          title="I'd like to visit ..."
-          fallbackText="Select the places you would like to visit below."
-          places={userPlaces}
-          onSelectPlace={handleStartRemovePlace}
-        />
+        {error && (
+          <ErrorPage title="An error occurred!" message={error.message} />
+        )}
+        {!error && (
+          <Places
+            title="I'd like to visit ..."
+            fallbackText="Select the places you would like to visit below."
+            loadingText="Fetching your places..."
+            isLoading={isFetching}
+            places={userPlaces}
+            onSelectPlace={handleStartRemovePlace}
+          />
+        )}
 
         <AvailablePlaces onSelectPlace={handleSelectPlace} />
       </main>

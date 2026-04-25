@@ -35,6 +35,8 @@ const App = () => {
     setModalIsOpen(false);
   }, []);
 
+  console.log(userPlaces);
+
   return (
     <>
       <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>

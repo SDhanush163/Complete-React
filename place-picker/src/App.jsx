@@ -4,38 +4,41 @@ import AvailablePlaces from "./components/AvailablePlaces";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import Modal from "./components/Modal";
 import Places from "./components/Places";
+import { updateUserPlaces } from "./http";
 
 const App = () => {
   const selectedPlace = useRef();
   const [userPlaces, setUserPlaces] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  function handleStartRemovePlace(place) {
+  const handleStartRemovePlace = (place) => {
     setModalIsOpen(true);
     selectedPlace.current = place;
-  }
+  };
 
-  function handleStopRemovePlace() {
+  const handleStopRemovePlace = () => {
     setModalIsOpen(false);
-  }
+  };
 
-  function handleSelectPlace(selectedPlace) {
+  const handleSelectPlace = async (selectedPlace) => {
     setUserPlaces((prevPickedPlaces) => {
       if (!prevPickedPlaces) prevPickedPlaces = [];
       if (prevPickedPlaces.some((place) => place.id === selectedPlace.id))
         return prevPickedPlaces;
       return [selectedPlace, ...prevPickedPlaces];
     });
-  }
 
-  const handleRemovePlace = useCallback(async function handleRemovePlace() {
+    try {
+      await updateUserPlaces([selectedPlace, ...userPlaces]);
+    } catch (error) {}
+  };
+
+  const handleRemovePlace = useCallback(async () => {
     setUserPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current.id),
     );
     setModalIsOpen(false);
   }, []);
-
-  console.log(userPlaces);
 
   return (
     <>

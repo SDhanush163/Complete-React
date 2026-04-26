@@ -9,6 +9,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Form Submitted", enteredValues);
+    setEnteredValues({ email: "", password: "" });
   };
 
   const handleInputChange = (identifier, value) => {

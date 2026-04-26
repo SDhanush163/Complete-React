@@ -11,6 +11,9 @@ const Login = () => {
       password: password.current.value,
     };
     console.log("Form Submitted", enteredValues);
+
+    email.current.value = "";
+    password.current.value = "";
   };
 
   return (

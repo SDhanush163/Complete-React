@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Singup = () => {
+  const [doPwdMatch, setDoPwdMatch] = useState(true);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -8,6 +10,12 @@ const Singup = () => {
     const acquisitionChannel = fd.getAll("acquisition");
     const data = Object.fromEntries(fd.entries());
     data.acquisition = acquisitionChannel;
+
+    if (data.password !== data["confirm-password"]) {
+      setDoPwdMatch(false);
+      return;
+    }
+
     console.log(data);
   };
 
@@ -18,13 +26,19 @@ const Singup = () => {
 
       <div className="control">
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" />
+        <input id="email" type="email" name="email" required />
       </div>
 
       <div className="control-row">
         <div className="control">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            minLength={8}
+          />
         </div>
 
         <div className="control">
@@ -33,7 +47,11 @@ const Singup = () => {
             id="confirm-password"
             type="password"
             name="confirm-password"
+            required
           />
+          <div className="control-error">
+            {!doPwdMatch && <p>Password must match</p>}
+          </div>
         </div>
       </div>
 
@@ -42,18 +60,18 @@ const Singup = () => {
       <div className="control-row">
         <div className="control">
           <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" />
+          <input type="text" id="first-name" name="first-name" required />
         </div>
 
         <div className="control">
           <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" />
+          <input type="text" id="last-name" name="last-name" required />
         </div>
       </div>
 
       <div className="control">
         <label htmlFor="phone">What best describes your role?</label>
-        <select id="role" name="role">
+        <select id="role" name="role" required>
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="employee">Employee</option>
@@ -92,8 +110,13 @@ const Singup = () => {
 
       <div className="control">
         <label htmlFor="terms-and-conditions">
-          <input type="checkbox" id="terms-and-conditions" name="terms" />I
-          agree to the terms and conditions
+          <input
+            type="checkbox"
+            id="terms-and-conditions"
+            name="terms"
+            required
+          />
+          I agree to the terms and conditions
         </label>
       </div>
 

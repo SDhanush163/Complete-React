@@ -1,15 +1,24 @@
 import { useRef, useState } from "react";
 
 const Login = () => {
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const email = useRef();
   const password = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const enteredValues = {
       email: email.current.value,
       password: password.current.value,
     };
+
+    const isEmailValid = enteredValues.email.includes("@");
+    if (!isEmailValid) {
+      setIsEmailInvalid(true);
+      return;
+    }
+
     console.log("Form Submitted", enteredValues);
 
     email.current.value = "";
@@ -24,6 +33,9 @@ const Login = () => {
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
           <input ref={email} id="email" type="email" name="email" />
+          <div className="control-error">
+            {isEmailInvalid && <p>Please enter a valid email address</p>}
+          </div>
         </div>
 
         <div className="control no-margin">

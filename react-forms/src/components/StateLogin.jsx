@@ -1,12 +1,18 @@
 import { useState } from "react";
 import Input from "./Input";
+import { hasMinLength, isEmail, isNotEmpty } from "../util/validation";
 
 const Login = () => {
   const [inputValue, setInputValue] = useState({ email: "", password: "" });
   const [didEdit, setDidEdit] = useState({ email: false, password: false });
-  const emailIsInvalid = didEdit.email && !inputValue.email.includes("@");
+
+  const emailIsInvalid =
+    didEdit.email &&
+    !isEmail(inputValue.email) &&
+    !isNotEmpty(inputValue.email);
+
   const passwordIsInvalid =
-    didEdit.password && inputValue.password.trim().length < 8;
+    didEdit.password && !hasMinLength(inputValue.password, 6);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,7 +41,7 @@ const Login = () => {
           onBlur={() => handleInputBlur("email")}
           onChange={(e) => handleInputChange("email", e.target.value)}
           value={inputValue.email}
-          error={emailIsInvalid && "Please enter a valid email address"}
+          error={emailIsInvalid && "Please enter a valid email address!"}
         />
         <Input
           label="Password"
@@ -45,7 +51,7 @@ const Login = () => {
           onBlur={() => handleInputBlur("password")}
           onChange={(e) => handleInputChange("password", e.target.value)}
           value={inputValue.password}
-          error={passwordIsInvalid && "Please enter a valid password"}
+          error={passwordIsInvalid && "Please enter a valid password!"}
         />
       </div>
 

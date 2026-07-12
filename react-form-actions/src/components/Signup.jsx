@@ -1,8 +1,48 @@
-import React from "react";
+import { useActionState } from "react";
+import {
+  hasMinLength,
+  isEmail,
+  isEqualToOtherValue,
+  isNotEmpty,
+} from "../util/validation";
 
 const Signup = () => {
+  const signupAction = (prev, formData) => {
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirm-password");
+    const firstName = formData.get("first-name");
+    const lastName = formData.get("last-name");
+    const role = formData.get("role");
+    const terms = formData.get("terms");
+    const acquisitionChannel = formData.getAll("acquisition");
+
+    let errors = [];
+
+    if (!isEmail(email)) errors.push("Invalid email address.");
+    if (!isNotEmpty(password) || !hasMinLength(password, 6))
+      errors.push(
+        "Password is either empty or not long enough (minimum length is 6 characters)",
+      );
+    if (!isEqualToOtherValue(password, confirmPassword))
+      errors.push("Passwords do not match.");
+    if (!isNotEmpty(firstName) || !isNotEmpty(lastName))
+      errors.push("Please provide both first and last name.");
+    if (!isNotEmpty(role)) errors.push("Please select a role.");
+    if (!terms) errors.push("You must agree to the terms and conditions.");
+    if (acquisitionChannel.length === 0)
+      errors.push("Please select atleast one Acquisition Channel.");
+
+    if (errors.length > 0) return { errors };
+    return { errors: null };
+  };
+
+  const [formState, formAction] = useActionState(signupAction, {
+    errors: null,
+  });
+
   return (
-    <form>
+    <form action={formAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
@@ -86,6 +126,14 @@ const Signup = () => {
           agree to the terms and conditions
         </label>
       </div>
+
+      {formState.errors && (
+        <ul className="error">
+          {formState.errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
 
       <p className="form-actions">
         <button type="reset" className="button button-flat">

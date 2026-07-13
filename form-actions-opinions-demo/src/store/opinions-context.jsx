@@ -37,7 +37,15 @@ export const OpinionsContextProvider = ({ children }) => {
     setOpinions((prevOpinions) => [savedOpinion, ...prevOpinions]);
   };
 
-  const upvoteOpinion = (id) => {
+  const upvoteOpinion = async (id) => {
+    const response = await fetch(
+      `http://localhost:3000/opinions/${id}/upvote`,
+      {
+        method: "POST",
+      },
+    );
+    if (!response.ok) return;
+
     setOpinions((prevOpinions) => {
       return prevOpinions.map((opinion) => {
         if (opinion.id === id) {
@@ -48,7 +56,15 @@ export const OpinionsContextProvider = ({ children }) => {
     });
   };
 
-  const downvoteOpinion = (id) => {
+  const downvoteOpinion = async (id) => {
+    const response = await fetch(
+      `http://localhost:3000/opinions/${id}/downvote`,
+      {
+        method: "POST",
+      },
+    );
+    if (!response.ok) return;
+
     setOpinions((prevOpinions) => {
       return prevOpinions.map((opinion) => {
         if (opinion.id === id) {

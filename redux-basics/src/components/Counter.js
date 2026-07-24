@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increase, increment, toggle } from "../store";
+import { decrement, increase, increment, toggle } from "../store/counterSlice";
 import classes from "./Counter.module.css";
 
 // Alt - Implemention in one function
@@ -11,8 +11,8 @@ import classes from "./Counter.module.css";
 // <button onClick={() => handleCounterChange("decrement")}>Decrement</button>
 
 const Counter = () => {
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
   const dispatch = useDispatch();
 
   const incrementHandler = () => dispatch(increment());

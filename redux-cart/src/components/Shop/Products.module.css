@@ -9,4 +9,19 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2rem;
+}
+
+.products li {
+  width: calc(70% - 0.5rem);
+}
+
+.products li:nth-child(odd) {
+  justify-self: end;
+}
+
+.products li:nth-child(even) {
+  justify-self: start;
 }

@@ -190,7 +190,7 @@ This repository includes projects built with:
 - Some topics are revisited across different projects. As I learned new patterns and libraries, I often rebuilt similar features to understand the trade-offs between different approaches.
 - I generally don't go back and rewrite older projects after learning something new. They serve as a snapshot of what I knew at that point, which makes it easier to see how my approach has changed over time.
 - The projects in this repository vary in size. Some are small exercises focused on a single concept, while others combine multiple concepts into more complete applications.
-- As I continue learning, I'll keep adding new projects covering topics such as routing, authentication, data fetching, testing, Next.js, and TypeScript.
+- As I continue learning, I'll keep adding new projects covering topics I learn.
 - While the projects are primarily learning exercises, I try to follow good development practices wherever they make sense; keeping components reusable, organising files clearly, and writing code that's easy to come back to later.
 
 ---

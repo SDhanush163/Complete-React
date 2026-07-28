@@ -5,10 +5,10 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import Notification from "./components/UI/Notification";
 import { fetchCartData, sendCartData } from "./store/cartActions";
-
-let isInitial = true;
+import { useRef } from "react";
 
 function App() {
+  let isInitial = useRef(true);
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
@@ -19,8 +19,8 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isInitial) {
-      isInitial = false;
+    if (isInitial.current) {
+      isInitial.current = false;
       return;
     }
 

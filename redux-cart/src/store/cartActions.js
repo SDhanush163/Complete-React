@@ -50,10 +50,20 @@ FIREBASE REALTIME DATABASE SETUP (TESTING MODE)
 
 =============================================================================== */
 
+const BACKEND_URL = import.meta.env.VITE_FIREBASE_URL;
+
+const cartUrl = () => {
+  if (!BACKEND_URL) {
+    throw new Error("Missing VITE_FIREBASE_URL");
+  }
+
+  return `${BACKEND_URL.replace(/\/$/, "")}/cart.json`;
+};
+
 export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch("<backend_url>/cart.json");
+      const response = await fetch(cartUrl());
 
       if (!response.ok) {
         throw new Error("Sending cart data failed.");
@@ -94,7 +104,7 @@ export const sendCartData = (cart) => {
     );
 
     const sendRequest = async () => {
-      const response = await fetch("<backend_url>/cart.json", {
+      const response = await fetch(cartUrl(), {
         method: "PUT",
         body: JSON.stringify({
           items: cart.items,

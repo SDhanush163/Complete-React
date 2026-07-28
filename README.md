@@ -30,9 +30,7 @@
 
 ## About
 
-This repository is a structured collection of React projects built while following the course **"React - The Complete Guide (incl. Redux)" by Maximilian Schwarzmüller (Udemy)**.
-
-Instead of building a single evolving application, I chose to separate each concept into its own project. This approach helps me:
+This repository is a structured collection of React projects built while learning various topics of React. Instead of building a single evolving application, I chose to separate each concept into its own project. This approach helps me:
 
 * Focus deeply on one concept at a time
 * Rebuild fundamentals from scratch multiple times

@@ -2,7 +2,7 @@
 
 # ⚛️ Complete React
 
-*A collection of React projects built while learning React through hands-on experimentation with concepts, patterns, and libraries.*
+_A collection of React projects built while learning React through hands-on experimentation with concepts, patterns, and libraries._
 
 <p align="center">
 
@@ -32,11 +32,11 @@
 
 This repository is a structured collection of React projects built while learning various topics of React. Instead of building a single evolving application, I chose to separate each concept into its own project. This approach helps me:
 
-* Focus deeply on one concept at a time
-* Rebuild fundamentals from scratch multiple times
-* Compare different patterns (e.g. Context API vs Redux)
-* Keep earlier learning stages intact for reference
-* Experiment freely without breaking existing code
+- Focus deeply on one concept at a time
+- Rebuild fundamentals from scratch multiple times
+- Compare different patterns (e.g. Context API vs Redux)
+- Keep earlier learning stages intact for reference
+- Experiment freely without breaking existing code
 
 Each folder represents a self-contained learning milestone, starting from JavaScript refreshers and basic React fundamentals, and gradually moving toward more advanced topics like state management, side effects, routing, and real-world application patterns.
 
@@ -73,42 +73,42 @@ Complete-React
 
 ### Fundamentals & JavaScript Refresher
 
-* [`javascript-refresher`](./javascript-refresher) — Modern JavaScript concepts used throughout React development
-* [`react-essentials`](./react-essentials) — Core React concepts: components, props, state, events, and rendering
-* [`react-counter`](./react-counter) — Simple state management and event handling practice
-* [`class-component-example`](./class-component-example) — Understanding legacy React class components
+- [`javascript-refresher`](./javascript-refresher) — Modern JavaScript concepts used throughout React development
+- [`react-essentials`](./react-essentials) — Core React concepts: components, props, state, events, and rendering
+- [`react-counter`](./react-counter) — Simple state management and event handling practice
+- [`class-component-example`](./class-component-example) — Understanding legacy React class components
 
 ---
 
 ### UI & Component Design
 
-* [`react-art`](./react-art) — Component composition, styling approaches, and UI structuring
+- [`react-art`](./react-art) — Component composition, styling approaches, and UI structuring
 
 ---
 
 ### Forms & User Input
 
-* [`react-forms`](./react-forms) — Controlled components, validation, and form handling
-* [`react-form-actions`](./react-form-actions) — Form actions and submission patterns
-* [`form-actions-opinions-demo`](./form-actions-opinions-demo) — Experimenting with different form handling approaches
+- [`react-forms`](./react-forms) — Controlled components, validation, and form handling
+- [`react-form-actions`](./react-form-actions) — Form actions and submission patterns
+- [`form-actions-opinions-demo`](./form-actions-opinions-demo) — Experimenting with different form handling approaches
 
 ---
 
 ### State Management
 
-* [`redux-basics`](./redux-basics) — Redux fundamentals and core concepts
-* [`react-redux`](./react-redux) — Connecting React with Redux
-* [`redux-cart`](./redux-cart) — Practical application using Redux Toolkit
-* [`elegant-context-shop`](./elegant-context-shop) — State management using Context API as an alternative to Redux
+- [`redux-basics`](./redux-basics) — Redux fundamentals and core concepts
+- [`react-redux`](./react-redux) — Connecting React with Redux
+- [`redux-cart`](./redux-cart) — Practical application using Redux Toolkit
+- [`elegant-context-shop`](./elegant-context-shop) — State management using Context API as an alternative to Redux
 
 ---
 
 ### Mini Applications & Practice Projects
 
-* [`investment-calculator`](./investment-calculator) — Financial calculation app with React state logic
-* [`place-picker`](./place-picker) — Interactive UI with dynamic selection logic
-* [`tic-tac-toe`](./tic-tac-toe) — Game logic, state transitions, and win conditions
-* [`time-challenge`](./time-challenge) — Timer-based challenge using effects and state updates
+- [`investment-calculator`](./investment-calculator) — Financial calculation app with React state logic
+- [`place-picker`](./place-picker) — Interactive UI with dynamic selection logic
+- [`tic-tac-toe`](./tic-tac-toe) — Game logic, state transitions, and win conditions
+- [`time-challenge`](./time-challenge) — Timer-based challenge using effects and state updates
 
 ---
 
@@ -120,34 +120,25 @@ Each folder is a standalone React application.
 git clone https://github.com/SDhanush163/Complete-React.git
 ```
 
-```bash
-cd Complete-React/javascript-refresher
-```
+## Running a project
 
-```bash
-npm install
-```
+Each folder is standalone, and the start command depends on the stack.
 
-```bash
-npm run dev
-```
+| Folder type | Example folders                                              | Command                      |
+| ----------- | ------------------------------------------------------------ | ---------------------------- |
+| Parcel      | `javascript-refresher`                                       | `npm install && npm start`   |
+| CRA         | `class-component-example`, `react-redux`, `redux-basics`     | `npm install && npm start`   |
+| Vite        | Most React projects in this repository[^1]                   | `npm install && npm run dev` |
+| Backends    | `place-picker/backend`, `form-actions-opinions-demo/backend` | `npm install && npm start`   |
 
-For any other project, just replace the folder name:
-
-```bash
-cd Complete-React/react-forms
-npm install
-npm run dev
-```
-
-For older Create React App-based projects:
-
-```bash
-npm install
-npm start
-```
+[^1]:
+    Includes `react-essentials`, `react-counter`, `react-art`, `react-forms`,
+    `react-form-actions`, `form-actions-opinions-demo`, `elegant-context-shop`,
+    `investment-calculator`, `place-picker`, `redux-cart`, `tic-tac-toe`, and
+    `time-challenge`.
 
 ---
+
 ## Tech Stack
 
 <p align="center">

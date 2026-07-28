@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Singup = () => {
+const Signup = () => {
   const [doPwdMatch, setDoPwdMatch] = useState(true);
 
   const handleSubmit = (event) => {
@@ -70,7 +70,7 @@ const Singup = () => {
       </div>
 
       <div className="control">
-        <label htmlFor="phone">What best describes your role?</label>
+        <label htmlFor="role">What best describes your role?</label>
         <select id="role" name="role" required>
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
@@ -132,4 +132,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Signup;

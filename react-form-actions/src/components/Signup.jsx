@@ -30,7 +30,7 @@ const signupAction = (prev, formData) => {
   if (!isNotEmpty(role)) errors.push("Please select a role.");
   if (!terms) errors.push("You must agree to the terms and conditions.");
   if (acquisitionChannel.length === 0)
-    errors.push("Please select atleast one Acquisition Channel.");
+    errors.push("Please select at least one acquisition channel.");
 
   if (errors.length > 0)
     return {
@@ -116,7 +116,7 @@ const Signup = () => {
       </div>
 
       <div className="control">
-        <label htmlFor="phone">What best describes your role?</label>
+        <label htmlFor="role">What best describes your role?</label>
         <select
           key={formState.enteredValues?.role ?? "initial"}
           id="role"
